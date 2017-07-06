@@ -1,0 +1,78 @@
+/*General*/
+body {
+    background: #EDEEF0;
+}
+
+/*LoginForm*/
+
+/*Правило для всех элементов с которыми не взаимодействовал пользователь*/
+form .ng-pristine {
+    /*border:1px  dotted lightblue;*/
+}
+
+/*Правило для всех элементов с которыми взаимодействовал пользователь и прошли проверку*/
+form input.ng-valid.ng-dirty {
+    background: lightskyblue;
+}
+
+/*Правило для всех элементов с которыми взаимодействовал пользователь и которые не прошли проверку*/
+form .ng-invalid.ng-dirty {
+    background: lightgray;
+    color: lightcoral;
+}
+
+.error span {
+    color: lightcoral;
+}
+
+.notValid.ng-submitted ::-webkit-input-placeholder {color:lightcoral;}
+.notValid.ng-submitted ::-moz-placeholder          {color:lightcoral;}
+.notValid.ng-submitted :-moz-placeholder           {color:lightcoral;}
+.notValid.ng-submitted :-ms-input-placeholder      {color:lightcoral;}
+
+.form-container form {
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid #cecece;;
+    border-radius:5px;
+    background-color: #fff;
+}
+
+.form-container form .signUp{
+    /*margin: 0 auto;*/
+}
+
+[name="registerForm"] .selectDateWrap {
+    margin-bottom: 15px;
+}
+
+[name="registerForm"] .selectDateWrap select {
+    display: inline-block;
+    width: 82px;
+}
+[name="registerForm"] .selectDateWrap select + select {
+    margin-left: 10px;
+}
+
+
+
+/*hero image container*/
+.heroImage{
+    position: relative;
+}
+
+.heroImage img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+/*Saas code */
+/*.heroImage{*/
+    /*position: relative;*/
+    /**/
+    /*img {*/
+        /*position: absolute;*/
+        /*min-height: 100%;*/
+        /*min-width: 100%;*/
+    /*}*/
+/*}*/

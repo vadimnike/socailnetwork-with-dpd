@@ -1,0 +1,91 @@
+<div class="container" >
+    <div class="row">
+        <div class="col-md-8">
+            <div class="heroImage">
+                <h1>Welcome to VRakashi</h1>
+                <!--<h1>Welcome to VRakashi, maybe best social network in the world</h1>-->
+                <img src="./img/social-media.jpg"/></div>
+            </div>
+            <!--Here will be logo image in  feature-->
+
+        <div class="col-md-4">
+            <div class="form-container" ng-controller="AuthController as authCtrl">
+                <form name="loginForm"  ng-controller="loginCtrl" ng-submit="authCtrl.isError(loginForm.$name, authCtrl.User, loginForm.$valid); " ng-class="loginForm.$invalid ? 'notValid' : ' ' " novalidate>
+                    <div class="form-group">
+                        <input type="email" name="userEmail" class="form-control" ng-model="authCtrl.User.email"
+                               placeholder="Email" required>
+                        <div class="error" ng-show="authCtrl.showError">
+                            <span>{{authCtrl.getError(loginForm.userEmail.$error)}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="userPassword" class="form-control" ng-model="authCtrl.User.pass"
+                               placeholder="Password"  ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/" ng-minlength="minlength" required>
+                        <div class="error" ng-show="authCtrl.showError">
+                            <span>{{authCtrl.getError(loginForm.userPassword.$error)}}</span>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" type="submit" ng-click="authCtrl.getUserPage()">Log In</button>
+                    </div>
+                    <div class="pull-right"><a href="#">Forgot your credentials?</a></div>
+                </form>
+                <form name="registerForm"  ng-controller="registerCtrl" ng-submit="authCtrl.isError(registerForm.$name, newUser, registerForm.$valid)" novalidate>
+                    <h4 class="formTitle text-center">Sign up with Vrakashi</h4>
+                    <div class="form-group">
+                        <input type="text" class="form-control"
+                               name="newUserFirstName"
+                               ng-model="authCtrl.newUser.firstName"
+                               placeholder="First Name" required>
+                        <div class="error" ng-show="authCtrl.showError">
+                            <span>{{authCtrl.getError(registerForm.newUserFirstName.$error)}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control"
+                               name="newUserLastName"
+                               ng-model="authCtrl.newUser.lastName"
+                               placeholder="Last Name" required>
+                        <div class="error" ng-show="authCtrl.showError">
+                            <span>{{authCtrl.getError(registerForm.newUserLastName.$error)}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control"
+                               name="newUserEmail"
+                               ng-model="authCtrl.newUser.email"
+                               placeholder="Your email"
+                               required>
+                        <div class="error" ng-show="authCtrl.showError">
+                            <span>{{authCtrl.getError(registerForm.newUserEmail.$error)}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control"
+                               name="newUserPassword"
+                               ng-model="authCtrl.newUser.password"
+                               placeholder="Your password"
+                               ng-pattern="/^[a-zA-Z0-9]*$/"
+                               ng-minlength="minlength" required>
+                        <div class="error" ng-show="authCtrl.showError">
+                            <span>{{authCtrl.getError(registerForm.newUserPassword.$error)}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5>Choose your gender </h5>
+                        <label><input type="radio" name="gender" value="male" ng-model="authCtrl.newUser.gender">Male</label>
+                        <label><input type="radio" name="gender" value="female" ng-model="authCtrl.newUser.gender">Female</label>
+                    </div>
+                    <div class="selectDateWrap form-group">
+                        <ng-combo-date-picker ng-model="authCtrl.classes" ng-attrs-date='{"class": "form-control", required: true}'
+                                              ng-attrs-month='{"class": "form-control", required: true}'
+                                              ng-attrs-year='{"class": "form-control", required: true}'>
+
+                        </ng-combo-date-picker>
+                    </div>
+                    <button class="btn btn-default center-block signUp" type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
