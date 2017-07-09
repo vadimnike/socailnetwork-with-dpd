@@ -7,12 +7,11 @@
     auth.controller('AuthController', function($scope, $http, $resource, $location, usersUrl) {
         var self = this;
 
-        self.User={}; // object binded with Login form data
+        $scope.user={}; // object binded with Login form data
 
         $scope.usersResource = $resource(usersUrl + ":id", {id: "@id"});
 
         $scope.users = $scope.usersResource.query(); // get all users with query() method from ngResource(database)
-
 
 
         //Attemp convert users colection to Array - false
@@ -34,11 +33,16 @@
         self.getUserPage = function(){
 
 
-            $scope.users; //Созадть  метод который вернет массив объектов и сравнить с данными с формы
+            //$scope.users; //Созадть  метод который вернет массив объектов и сравнить с данными с формы
 
-            console.log($scope.usersArr );
+            //console.log($scope.usersArr );
 
-            // if($scope.user.get({id: User.id})){
+
+            if( $scope.user &&  $scope.user.$get){
+                $location.path("/page");
+            }
+
+            // if(user.get({id:   $scope.users.id})){
             //     $location.path("/page");
             // }
         }

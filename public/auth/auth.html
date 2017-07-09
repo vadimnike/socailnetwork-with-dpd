@@ -10,16 +10,17 @@
 
         <div class="col-md-4">
             <div class="form-container" ng-controller="AuthController as authCtrl">
-                <form name="loginForm"  ng-controller="loginCtrl" ng-submit="authCtrl.isError(loginForm.$name, authCtrl.User, loginForm.$valid); " ng-class="loginForm.$invalid ? 'notValid' : ' ' " novalidate>
+                <form name="loginForm"  ng-controller="loginCtrl" ng-submit="authCtrl.isError(loginForm.$name, authCtrl.user, loginForm.$valid); "
+                      ng-class="loginForm.$invalid ? 'notValid' : ' ' " ng-repeat="user in users" novalidate>
                     <div class="form-group">
-                        <input type="email" name="userEmail" class="form-control" ng-model="authCtrl.User.email"
+                        <input type="email" name="userEmail" class="form-control" ng-model="user.userEmail"
                                placeholder="Email" required>
                         <div class="error" ng-show="authCtrl.showError">
                             <span>{{authCtrl.getError(loginForm.userEmail.$error)}}</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="userPassword" class="form-control" ng-model="authCtrl.User.pass"
+                        <input type="password" name="userPassword" class="form-control" ng-model="user.password"
                                placeholder="Password"  ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/" ng-minlength="minlength" required>
                         <div class="error" ng-show="authCtrl.showError">
                             <span>{{authCtrl.getError(loginForm.userPassword.$error)}}</span>
@@ -30,7 +31,8 @@
                     </div>
                     <div class="pull-right"><a href="#">Forgot your credentials?</a></div>
                 </form>
-                <form name="registerForm"  ng-controller="registerCtrl" ng-submit="authCtrl.isError(registerForm.$name, newUser, registerForm.$valid)" novalidate>
+                <form name="registerForm"  ng-controller="registerCtrl" ng-submit="authCtrl.isError(registerForm.$name, newUser, registerForm.$valid)"
+                      novalidate>
                     <h4 class="formTitle text-center">Sign up with Vrakashi</h4>
                     <div class="form-group">
                         <input type="text" class="form-control"
